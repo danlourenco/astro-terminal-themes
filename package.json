@@ -1,6 +1,6 @@
 {
   "name": "astro-terminal-themes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Astro integration to convert terminal themes (Ghostty, Warp, etc.) to Tailwind CSS themes",
   "type": "module",
   "main": "dist/index.js",
