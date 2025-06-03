@@ -1,8 +1,8 @@
-import { describe, it, expect } from 'vitest';
-import { GhosttyAdapter, WarpAdapter, ThemeProcessor } from '../src/index.js';
+import { describe, it, expect } from "vitest";
+import { GhosttyAdapter, WarpAdapter, ThemeProcessor } from "../src/index.js";
 
-describe('GhosttyAdapter', () => {
-  it('should parse a basic Ghostty theme', () => {
+describe("GhosttyAdapter", () => {
+  it("should parse a basic Ghostty theme", () => {
     const adapter = new GhosttyAdapter();
     const content = `
 background = #1d2021
@@ -26,16 +26,16 @@ palette = 15=#ebdbb2
 `;
 
     const result = adapter.parse(content);
-    
-    expect(result.background).toBe('#1d2021');
-    expect(result.foreground).toBe('#ebdbb2');
-    expect(result.colors.red).toBe('#800000'); // Falls back to default when palette parsing fails
-    expect(result.colors.green).toBe('#008000'); // Falls back to default when palette parsing fails
+
+    expect(result.background).toBe("#1d2021");
+    expect(result.foreground).toBe("#ebdbb2");
+    expect(result.colors.red).toBe("#800000"); // Falls back to default when palette parsing fails
+    expect(result.colors.green).toBe("#008000"); // Falls back to default when palette parsing fails
   });
 });
 
-describe('WarpAdapter', () => {
-  it('should parse a basic Warp theme', () => {
+describe("WarpAdapter", () => {
+  it("should parse a basic Warp theme", () => {
     const adapter = new WarpAdapter();
     const content = `
 name: Test Theme
@@ -53,78 +53,78 @@ terminal_colors:
 `;
 
     const result = adapter.parse(content);
-    
-    expect(result.background).toBe('#002b36');
-    expect(result.foreground).toBe('#839496');
-    expect(result.colors.red).toBe('#dc322f');
-    expect(result.colors.green).toBe('#859900');
+
+    expect(result.background).toBe("#002b36");
+    expect(result.foreground).toBe("#839496");
+    expect(result.colors.red).toBe("#dc322f");
+    expect(result.colors.green).toBe("#859900");
   });
 });
 
-describe('ThemeProcessor', () => {
-  it('should generate direct theme CSS', () => {
+describe("ThemeProcessor", () => {
+  it("should generate direct theme CSS", () => {
     const processor = new ThemeProcessor();
     const colors = {
-      background: '#1d2021',
-      foreground: '#ebdbb2',
+      background: "#1d2021",
+      foreground: "#ebdbb2",
       colors: {
-        black: '#1d2021',
-        red: '#cc241d',
-        green: '#98971a',
-        yellow: '#d79921',
-        blue: '#458588',
-        magenta: '#b16286',
-        cyan: '#689d6a',
-        white: '#a89984',
-        brightBlack: '#928374',
-        brightRed: '#fb4934',
-        brightGreen: '#b8bb26',
-        brightYellow: '#fabd2f',
-        brightBlue: '#83a598',
-        brightMagenta: '#d3869b',
-        brightCyan: '#8ec07c',
-        brightWhite: '#ebdbb2',
-      }
+        black: "#1d2021",
+        red: "#cc241d",
+        green: "#98971a",
+        yellow: "#d79921",
+        blue: "#458588",
+        magenta: "#b16286",
+        cyan: "#689d6a",
+        white: "#a89984",
+        brightBlack: "#928374",
+        brightRed: "#fb4934",
+        brightGreen: "#b8bb26",
+        brightYellow: "#fabd2f",
+        brightBlue: "#83a598",
+        brightMagenta: "#d3869b",
+        brightCyan: "#8ec07c",
+        brightWhite: "#ebdbb2",
+      },
     };
 
     const css = processor.generateTailwindTheme(colors, false);
-    
-    expect(css).toContain('@theme {');
-    expect(css).toContain('--color-background: #1d2021');
-    expect(css).toContain('--color-red: #cc241d');
-    expect(css).toContain('--color-green: #98971a');
+
+    expect(css).toContain("@theme {");
+    expect(css).toContain("--color-background: #1d2021");
+    expect(css).toContain("--color-red: #cc241d");
+    expect(css).toContain("--color-green: #98971a");
   });
 
-  it('should generate semantic theme CSS', () => {
+  it("should generate semantic theme CSS", () => {
     const processor = new ThemeProcessor();
     const colors = {
-      background: '#1d2021',
-      foreground: '#ebdbb2',
+      background: "#1d2021",
+      foreground: "#ebdbb2",
       colors: {
-        black: '#1d2021',
-        red: '#cc241d',
-        green: '#98971a',
-        yellow: '#d79921',
-        blue: '#458588',
-        magenta: '#b16286',
-        cyan: '#689d6a',
-        white: '#a89984',
-        brightBlack: '#928374',
-        brightRed: '#fb4934',
-        brightGreen: '#b8bb26',
-        brightYellow: '#fabd2f',
-        brightBlue: '#83a598',
-        brightMagenta: '#d3869b',
-        brightCyan: '#8ec07c',
-        brightWhite: '#ebdbb2',
-      }
+        black: "#1d2021",
+        red: "#cc241d",
+        green: "#98971a",
+        yellow: "#d79921",
+        blue: "#458588",
+        magenta: "#b16286",
+        cyan: "#689d6a",
+        white: "#a89984",
+        brightBlack: "#928374",
+        brightRed: "#fb4934",
+        brightGreen: "#b8bb26",
+        brightYellow: "#fabd2f",
+        brightBlue: "#83a598",
+        brightMagenta: "#d3869b",
+        brightCyan: "#8ec07c",
+        brightWhite: "#ebdbb2",
+      },
     };
 
     const css = processor.generateTailwindTheme(colors, true);
-    
-    expect(css).toContain('@theme {');
-    expect(css).toContain('--color-primary: #458588');
-    expect(css).toContain('--color-destructive: #cc241d');
-    expect(css).toContain('--color-success: #98971a');
+
+    expect(css).toContain("@theme {");
+    expect(css).toContain("--color-primary: #458588");
+    expect(css).toContain("--color-destructive: #cc241d");
+    expect(css).toContain("--color-success: #98971a");
   });
 });

@@ -11,6 +11,11 @@ Convert terminal theme configurations (Ghostty, Warp, iTerm2, etc.) into Tailwin
 - 📁 **Auto-Discovery**: Automatically finds themes in your themes directory
 - 🎯 **Two Mapping Modes**: Direct ANSI colors or semantic color names
 
+## Requirements
+
+- **Node.js**: v22.0.0 or higher
+- **Astro**: v5.0.0 or higher
+
 ## Installation
 
 ```bash

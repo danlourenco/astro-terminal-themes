@@ -3,7 +3,7 @@ import type { AstroIntegration } from "astro";
 import { promises as fs } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import chokidar from "chokidar";
+import chokidar, { type FSWatcher } from "chokidar";
 
 export interface TerminalThemeIntegrationOptions {
   themesDir?: string;
@@ -74,9 +74,11 @@ export class GhosttyAdapter implements ThemeAdapter {
     const paletteColors: string[] = new Array(16);
     for (let i = 0; i < 16; i++) {
       // Look for "palette = ${i}=#color" format
-      const paletteKey = Object.keys(config).find(key => key === 'palette' && config[key].startsWith(`${i}=`));
+      const paletteKey = Object.keys(config).find(
+        (key) => key === "palette" && config[key].startsWith(`${i}=`)
+      );
       if (paletteKey) {
-        const colorValue = config[paletteKey].split('=')[1];
+        const colorValue = config[paletteKey].split("=")[1];
         if (colorValue) {
           paletteColors[i] = this.normalizeColor(colorValue);
         }
@@ -373,7 +375,7 @@ export default function terminalThemeIntegration(
   } = options;
 
   let processor: ThemeProcessor;
-  let watcher: chokidar.FSWatcher | null = null;
+  let watcher: FSWatcher | null = null;
 
   return {
     name: "terminal-theme-integration",
@@ -440,18 +442,18 @@ export default function terminalThemeIntegration(
             persistent: true,
           });
 
-          watcher.on("change", async (path) => {
-            logger.info(`Theme file changed: ${path}`);
+          watcher.on("change", async (filepath: string) => {
+            logger.info(`Theme file changed: ${filepath}`);
             await generateThemeFile();
           });
 
-          watcher.on("add", async (path) => {
-            logger.info(`Theme file added: ${path}`);
+          watcher.on("add", async (filepath: string) => {
+            logger.info(`Theme file added: ${filepath}`);
             await generateThemeFile();
           });
 
-          watcher.on("unlink", async (path) => {
-            logger.info(`Theme file removed: ${path}`);
+          watcher.on("unlink", async (filepath: string) => {
+            logger.info(`Theme file removed: ${filepath}`);
             await generateThemeFile();
           });
         }

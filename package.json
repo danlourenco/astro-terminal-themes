@@ -42,32 +42,32 @@
     "colors",
     "theming"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Dan Lourenco <danlourenco@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/astro-terminal-themes.git"
+    "url": "git+https://github.com/danlourenco/astro-terminal-themes.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/astro-terminal-themes/issues"
+    "url": "https://github.com/danlourenco/astro-terminal-themes/issues"
   },
-  "homepage": "https://github.com/yourusername/astro-terminal-themes#readme",
+  "homepage": "https://github.com/danlourenco/astro-terminal-themes#readme",
   "peerDependencies": {
-    "astro": "^4.0.0"
+    "astro": "^5.0.0"
   },
   "dependencies": {
-    "chokidar": "^3.5.3"
+    "chokidar": "^4.0.3"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vitest/coverage-v8": "^1.0.0",
-    "eslint": "^8.0.0",
-    "typescript": "^5.0.0",
-    "vitest": "^1.0.0"
+    "@types/node": "^22.15.29",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "@vitest/coverage-v8": "^3.2.0",
+    "eslint": "^9.28.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.0"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   }
 }
